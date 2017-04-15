@@ -1,10 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class DestroyOnMouseDown : MonoBehaviour {
 	void OnMouseDown()
     {
-        Debug.Log(gameObject);
+        int value = GetComponent<Points>().Value;
+        GameManager.gm.AddPoints(value);
+		
+		Destroy(gameObject);
     }
 }
