@@ -7,9 +7,9 @@ public class DestroyAfter : MonoBehaviour {
 	public float timeToDestroy = 2.0f;
 
 	void Start () {
-		Invoke("DestroyMe", timeToDestroy);	
+		Invoke("DestroyMe", timeToDestroy);		
 	}
-	
+
 	void DestroyMe () {
 		Destroy(gameObject);	
 	}
