@@ -1,24 +1,16 @@
-﻿using UnityEngine;
+﻿public class GameManager {
 
-public class GameManager : MonoBehaviour {
-
-	private static GameManager instance;
+	private static GameManager instance = new GameManager();
 
 	public int Points;
 
 	private GameManager() { }
 	
 	public static GameManager gm {
-		get {
-			if (instance == null) {
-				instance = new GameManager();
-			}
-			return instance;
-		}
+		get { return instance; }
 	}
 
 	public void AddPoints(int points) {
 		Points += points;
 	}
-
 }
