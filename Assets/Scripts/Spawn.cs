@@ -1,21 +1,24 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Spawn : MonoBehaviour {
 
-	public float startTime = 2.0f, 
-				 repeatRate = 2.0f;
+	public float repeatRate = 2.0f;
 
 	public GameObject prefab;
 	public Vector3 position;
 
 
-	void Start () {
-		InvokeRepeating("InstantiatePrefab", startTime, repeatRate);
+	void FixedUpdate () {
+		StartCoroutine(InstantiatePrefab);
 	}
 	
-	void InstantiatePrefab () {
-		Instantiate(prefab, position, Quaternion.identity);
+	private IEnumerator InstantiatePrefab {
+		get {
+			Instantiate(prefab, position, Quaternion.identity);
+
+			var seconds = Random.Range(1, 3);
+			yield return new WaitForSeconds(seconds);
+		}
 	}
 }
