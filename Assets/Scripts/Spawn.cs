@@ -7,7 +7,7 @@ public class Spawn : MonoBehaviour {
 	public float startTime = 2.0f, 
 				 repeatRate = 2.0f;
 
-	public GameObject go;
+	public GameObject prefab;
 	public Vector3 position;
 
 
@@ -16,6 +16,6 @@ public class Spawn : MonoBehaviour {
 	}
 	
 	void InstantiatePrefab () {
-		Instantiate(go, position, Quaternion.identity);
+		Instantiate(prefab, position, Quaternion.identity);
 	}
 }
