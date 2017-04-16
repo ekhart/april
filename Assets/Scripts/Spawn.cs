@@ -1,11 +1,11 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Spawn : MonoBehaviour {
 
-	public float repeatRate = 2.0f;
+	public int SpawnMinTime = 1;
+	public int SpawnMaxTime = 3;
 	
-	public GameObject prefab;
+	public GameObject[] prefabs;
     private float gatheredTime;
     private float nextSpawnTime;
 
@@ -13,11 +13,18 @@ public class Spawn : MonoBehaviour {
 
 	void Update() {
 		gatheredTime += Time.deltaTime;
-		
-		if (gatheredTime > nextSpawnTime) {
+
+		if (gatheredTime > nextSpawnTime)
+        {
 			gatheredTime = 0;
-			nextSpawnTime = Random.Range(1, 3);
-			Instantiate(prefab, gameObject.transform.position, Quaternion.identity);
-		}		
-	}
+        	nextSpawnTime = Random.Range(SpawnMinTime, SpawnMaxTime);
+			SpawnPrefab();
+        }
+    }
+
+    private void SpawnPrefab()
+    {
+        var i = Random.Range(0, prefabs.Length);
+        Instantiate(prefabs[i], gameObject.transform.position, Quaternion.identity);
+    }
 }
