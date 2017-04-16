@@ -11,6 +11,7 @@ public class GameManager {
 
 	private GameManager() { 
 		ScoreText = GameObject.Find("ScoreText").GetComponent<Text>();
+		
 	}
 	
 	public static GameManager gm {
