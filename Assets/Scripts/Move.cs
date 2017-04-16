@@ -4,19 +4,23 @@ using UnityEngine;
 
 public class Move : MonoBehaviour {
 
+	public float SpeedMinX;
 	public float SpeedMaxX;
+	
+	public float SpeedMinY;
 	public float SpeedMaxY;
 
-	private float dx, dy;
+	private Vector3 position;
 
 	// Use this for initialization
 	void Start () {
-		dx = Random.Range(-SpeedMaxX, SpeedMaxX);
-		dy = Random.Range(-SpeedMaxY, SpeedMaxY);
+		var x = Random.Range(SpeedMinX, SpeedMaxX);
+		var y = Random.Range(SpeedMinY, SpeedMaxY);
+		position = new Vector3(x, y, 0);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		transform.position += new Vector3(dx, dy, 0);
+		transform.position += position;
 	}
 }
