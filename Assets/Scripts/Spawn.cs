@@ -25,6 +25,7 @@ public class Spawn : MonoBehaviour {
     private void SpawnPrefab()
     {
         var i = Random.Range(0, prefabs.Length);
-        Instantiate(prefabs[i], gameObject.transform.position, Quaternion.identity);
+        var go = Instantiate(prefabs[i], gameObject.transform.position, Quaternion.identity);
+        go.transform.parent = this.transform;
     }
 }

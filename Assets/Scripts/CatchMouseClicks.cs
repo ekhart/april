@@ -36,7 +36,7 @@ public class CatchMouseClicks : MonoBehaviour {
 
 	Vector3 ScreenToWorldPoint(Vector3 vector) {
 		var v = Camera.main.ScreenToWorldPoint(vector);
-		v.z = 0;
+		v.z = 1;
 		return v;
 	}
 }
