@@ -9,9 +9,18 @@ public class Spawn : MonoBehaviour {
     private float gatheredTime;
     private float nextSpawnTime;
 
-    public Vector3 throwForce = new Vector3(9, 9, 0);
+    public Vector3 fromThrowForce = new Vector3(1, 1, 0);
+    public Vector3 toThrowForce = new Vector3(11, 11, 0);
 
-	void Update() {
+	private Vector3 ThrowForce {
+        get {
+            var x = Random.Range(fromThrowForce.x, toThrowForce.x);
+            var y = Random.Range(fromThrowForce.y, toThrowForce.y);
+            return new Vector3(x, y, 0);
+        }
+    }
+
+    void Update() {
 		gatheredTime += Time.deltaTime;
 
 		if (gatheredTime > nextSpawnTime)
@@ -27,6 +36,6 @@ public class Spawn : MonoBehaviour {
         var i = Random.Range(0, prefabs.Length);
         var go = Instantiate(prefabs[i], gameObject.transform.position, Quaternion.identity);
         go.transform.parent = this.transform;
-        go.GetComponent<Rigidbody2D>().AddForce(throwForce, ForceMode2D.Impulse);
+        go.GetComponent<Rigidbody2D>().AddForce(ThrowForce, ForceMode2D.Impulse);
     }
 }
