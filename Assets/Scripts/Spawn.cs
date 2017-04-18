@@ -9,7 +9,7 @@ public class Spawn : MonoBehaviour {
     private float gatheredTime;
     private float nextSpawnTime;
 
-    private 
+    public Vector3 throwForce = new Vector3(9, 9, 0);
 
 	void Update() {
 		gatheredTime += Time.deltaTime;
@@ -27,5 +27,6 @@ public class Spawn : MonoBehaviour {
         var i = Random.Range(0, prefabs.Length);
         var go = Instantiate(prefabs[i], gameObject.transform.position, Quaternion.identity);
         go.transform.parent = this.transform;
+        go.GetComponent<Rigidbody2D>().AddForce(throwForce, ForceMode2D.Impulse);
     }
 }
