@@ -3,8 +3,7 @@
 public class DestroyOnMouseDown : MonoBehaviour {
 	void OnMouseDown()
     {
-        int value = GetComponent<Points>().Value;
-        GameManager.gm.AddPoints(value);
+        GameManager.gm.SetPoints(GetComponent<Points>());
 		
 		Destroy(gameObject);
     }
