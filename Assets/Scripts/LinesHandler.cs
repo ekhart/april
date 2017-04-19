@@ -12,11 +12,10 @@ public class LinesHandler : MonoBehaviour
     void Start()
     {
         lineGO = new GameObject("Line");
-        // lineGO.AddComponent<LineRenderer>();
         lineRenderer = lineGO.AddComponent<LineRenderer>();
         lineRenderer.material = new Material(Shader.Find("Mobile/Particles/Additive"));
         lineRenderer.SetColors(c1, c2);
-        lineRenderer.SetWidth(0.1F, 0);
+        lineRenderer.SetWidth(0.1f, 0);
         lineRenderer.numPositions = 0;
     }
      
@@ -29,7 +28,7 @@ public class LinesHandler : MonoBehaviour
             if (touch.phase == TouchPhase.Moved)
             {
                 lineRenderer.numPositions = i+1;
-                var position = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 15);
+                var position = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0);
                 lineRenderer.SetPosition(i, Camera.main.ScreenToWorldPoint(position));
                 i++;
                  
