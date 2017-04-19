@@ -8,15 +8,26 @@ public class GameManager {
     public int Points;
 	public int Time = 30;
 
-    internal void StartGame()
-    {
-        // currentState = 
-    }
+	private Text scoreText;
+    public Text ScoreText {
+		get {
+			if (!scoreText) {
+				scoreText = GameObject.Find("ScoreText").GetComponent<Text>();
+			}
+			return scoreText;
+		}
+	}
+	public Text timeText;
+	public Text TimeText {
+		get {
+			if (!timeText) {
+				timeText = GameObject.Find("TimeText").GetComponent<Text>();
+			}
+			return timeText;
+		}
+	}
 
-    public Text ScoreText;
-	public Text TimeText;
-
-	enum State
+    enum State
 	{
 		MAIN_MENU, PLAYING, GAME_OVER
 	}
@@ -25,8 +36,6 @@ public class GameManager {
 
 	private GameManager() {
 		currentState = State.MAIN_MENU;
-		ScoreText = GameObject.Find("ScoreText").GetComponent<Text>();
-		TimeText = GameObject.Find("TimeText").GetComponent<Text>();
 	}
 
 	public static GameManager gm {
@@ -63,4 +72,9 @@ public class GameManager {
 		}
     }
 
+	internal void RestartGame()
+    {
+        AddPoints(-Points);
+		SubtractTime(-Time - 30);
+    }
 }

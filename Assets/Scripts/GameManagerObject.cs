@@ -20,6 +20,7 @@ public class GameManagerObject : MonoBehaviour {
 
 	public void RestartGame() {
 		SceneManager.LoadScene("main");
+		GameManager.gm.RestartGame();
 	}
 
 	public void GameOver() {
